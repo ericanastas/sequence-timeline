@@ -25,27 +25,41 @@ D3 based visualization of chronological events in a combined sequence diagram st
     - May be set to the same as the source for events that are not between lines
 - String `Class`: The CSS class to apply to the event elements
 
-### Created/Destroyed ###
 
+#### Duration ###
 
-
-- Bool `TargetCreated`: Identifies if the target was created by this event
-
-
-
-
-    - Any line which does not have a corresponding created event is assumed to have been created before the start of the diagram
-
-
-#### Position ###
+Events can have a duration which cause the event to show up as a duration bar. 
 
 - Number `Duration`: The duration of the event
-    - May be zero if event occurs at a specific point in time
+    - May be null or zero if event occurs at a specific point in time
+     - Events with a null or zero duration will show up as a circle. 
+     - This could still use the options below to determine if the circle is drawn on the source or target line.
 - String `Position`: The location of the duration bar for the event
     - `StartSource`: Starts on the source line at TimeStamp
     - `EndSource`: Ends on the source line at TimeStamp 
     - `StartTarget`: Starts on the target line at TimeStamp
     - `EndTarget`: Ends on the target line at TimeStamp
+
+### Created/Destroyed ###
+
+- Lines can be created and destroyed over the timeline. 
+- Any line which does not have a corresponding created event is assumed to have been created before the start of the diagram. 
+
+- Line could create itself with an event where `Source` = `Target`
+
+
+
+- Bool `TargetCreated`: Identifies if the target was created by this event
+
+- Should it be possible to 
+
+
+
+
+  
+
+
+
 
 
 #### Activation ###
