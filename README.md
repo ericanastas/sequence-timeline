@@ -3,8 +3,6 @@
 D3 based visualization of chronological events in a combined sequence diagram style timeline.
 
 
-
-
 # Lines #
 - Each line in the diagram is given a unique name identifier
 - The line or channel identifier
@@ -24,12 +22,18 @@ D3 based visualization of chronological events in a combined sequence diagram st
 - Date `TimeStamp`: The date/time of the event occurred
 - String `Source`: The source line of the event
 - String `Target`: The target of the event 
-    - May be set to the same as the source for event that are not between life lines
-
+    - May be set to the same as the source for events that are not between lines
+- String `Class`: The CSS class to apply to the event elements
 
 ### Created/Destroyed ###
 
+
+
 - Bool `TargetCreated`: Identifies if the target was created by this event
+
+
+
+
     - Any line which does not have a corresponding created event is assumed to have been created before the start of the diagram
 
 
@@ -62,6 +66,7 @@ D3 based visualization of chronological events in a combined sequence diagram st
     - Line may be recreated after a destroy event by any other event		
 3. Determine Band(s) when each time line is active
 4. Draw Events over bars
+    - 
 	
 	
 	
