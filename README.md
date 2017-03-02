@@ -9,10 +9,6 @@ D3 based visualization of chronological events in a combined sequence diagram st
 - This could be a username, file name etc..
 	
 	
-# Filtering Lines #
-- Should be able to filter out/hide lines
-- Single arrows to/from hidden lines should still show up as short visible lines to/from empty space
-
 	
 # Event Properties #
 
@@ -47,19 +43,12 @@ Events can have a duration which cause the event to show up as a duration bar.
 
 - Line could create itself with an event where `Source` = `Target`
 
-
-
 - Bool `TargetCreated`: Identifies if the target was created by this event
 
-- Should it be possible to 
+- Should it be possible for the Source to be created by an event as well? I think the assumption is the source exists before the event
 
-
-
-
-  
-
-
-
+- Bool `TargetDestroyed`: The Target line is destroyed by the event
+- Bool `SourceDestroyed`: The Source line is destroyed by the event
 
 
 #### Activation ###
@@ -69,7 +58,7 @@ Events can have a duration which cause the event to show up as a duration bar.
 
 	
 
-# Draw Logic #
+## Draw Logic ##
 
 1. Iterate over all events an determine all line identifier
 2. Determine Band(s) when each time line is alive
@@ -82,13 +71,16 @@ Events can have a duration which cause the event to show up as a duration bar.
 4. Draw Events over bars
     - 
 	
-	
+## Filtering / Hiding Lines ##
+- Should be able to filter out/hide lines
+- Single arrows to/from hidden lines should still show up as short visible lines to/from empty space	
 	
 
-# Auto-sort Bars/Lines #
+## Auto-sort Bars/Lines ##
 
 - Attempt to autosort the lines to reduce the number of crossing lines
 - Start with a random sort of the lines
-- For each line count the number of event lines up and down to determine the prefered move direction for the line
+- For each line count the number of event lines up and down to determine the preferred move direction for the line
+- Weight the strength of each line based on their length
 - Move all the lines in the weighted direction
 - repeat
