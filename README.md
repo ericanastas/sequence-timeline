@@ -16,27 +16,39 @@ D3 based visualization of chronological events in a combined sequence diagram st
 - Single arrows to/from hidden lines should still show up as short visible lines to/from empty space
 
 	
-# Event Properties#
-- Description: A short description of the event
-- TimeStamp: The date/time of the event occurred
-- Source: The source line of the event
-- Target: The target of the event (May be set to the same as the source for event that are not between life lines)
-- TargetCreated: True/false
-    - Identifies if the target was created by this event
+# Event Properties #
+
+### Base Properites ###
+
+- String `Description`: A short description of the event
+- Date `TimeStamp`: The date/time of the event occurred
+- String `Source`: The source line of the event
+- String `Target`: The target of the event 
+    - May be set to the same as the source for event that are not between life lines
+
+
+### Created/Destroyed ###
+
+- Bool `TargetCreated`: Identifies if the target was created by this event
     - Any line which does not have a corresponding created event is assumed to have been created before the start of the diagram
-- Duration: The duration of the event, may be zero if event occurs at a specific point in time
-- Position
-    - Sets the location of the durration bar for the event
-    - Options
-        - StartSource: Starts on the source line at TimeStamp
-        - EndSource: Ends on the source line at TimeStamp
-        - StartTarget: Starts on the target line at TimeStamp
-        - EndTarget: Ends on the target line at TimeStamp
 
 
-	
+#### Position ###
+
+- Number `Duration`: The duration of the event
+    - May be zero if event occurs at a specific point in time
+- String `Position`: The location of the duration bar for the event
+    - `StartSource`: Starts on the source line at TimeStamp
+    - `EndSource`: Ends on the source line at TimeStamp 
+    - `StartTarget`: Starts on the target line at TimeStamp
+    - `EndTarget`: Ends on the target line at TimeStamp
+
+
+#### Activation ###
+
 - Activation
     - Lines can be activated and deactivated
+
 	
 
 # Draw Logic #
