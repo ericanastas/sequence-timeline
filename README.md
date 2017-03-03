@@ -2,17 +2,27 @@
 
 D3 based visualization of chronological events in a combined sequence diagram style timeline.
 
-
 # Lines #
 - Each line in the diagram is given a unique name identifier
 - The line or channel identifier
 - This could be a username, file name etc..
 	
-	
-	
 # Event Properties #
 
-### Base Properites ###
+```
+#!javascript
+
+{
+    "desc":"Event description",
+    "src":"Source Line",
+     "tgt":"target line",
+     "class"="failed",
+     "dur":1234,
+     "pos":"ss"
+}
+```
+
+### Base Properties ###
 
 - String `desc`: A short description of the event
 - Date `time`: The date/time of the event occurred
@@ -30,11 +40,11 @@ Events can have a duration which cause the event to show up as a duration bar.
     - May be null or zero if event occurs at a specific point in time
      - Events with a null or zero duration will show up as a circle. 
      - This could still use the options below to determine if the circle is drawn on the source or target line.
-- String `Position`: The location of the duration bar for the event
-    - `StartSource`: Starts on the source line at TimeStamp
-    - `EndSource`: Ends on the source line at TimeStamp 
-    - `StartTarget`: Starts on the target line at TimeStamp
-    - `EndTarget`: Ends on the target line at TimeStamp
+- String `pos`: The location of the duration bar for the event
+    - `ss`: Starts on the source line at `time`
+    - `es`: Ends on the source line at `time`
+    - `st`: Starts on the target line at `time`
+    - `et`: Ends on the target line at `time`
 
 ### Created/Destroyed ###
 
@@ -43,12 +53,12 @@ Events can have a duration which cause the event to show up as a duration bar.
 
 - Line could create itself with an event where `Source` = `Target`
 
-- Bool `tgtCreated`: Identifies if the target was created by this event
+- Bool `tgtCre`: Identifies if the target was created by this event
 
 - Should it be possible for the Source to be created by an event as well? I think the assumption is the source exists before the event
 
-- Bool `tgtDestroyed`: The Target line is destroyed by the event
-- Bool `srcDestroyed`: The Source line is destroyed by the event
+- Bool `tgtDes`: The Target line is destroyed by the event
+- Bool `srcDes`: The Source line is destroyed by the event
 
 
 #### Activation ###
