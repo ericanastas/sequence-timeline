@@ -13,13 +13,13 @@ D3 based visualization of chronological events in a combined sequence diagram st
 #!javascript
 
 {
-    "desc":"Event description",
+    "desc":"Event Description",
     "time":"2012-04-23T18:25:43.511Z",
     "src":"Source Line",
-     "tgt":"target line",
-     "class"="failed",
-     "dur":1234,
-     "pos":"ss"
+    "tgt":"target line",
+    "class"="failed",
+    "dur":300,
+    "pos":"eSrc"
 }
 ```
 
@@ -37,15 +37,15 @@ D3 based visualization of chronological events in a combined sequence diagram st
 
 Events can have a duration which cause the event to show up as a duration bar. 
 
-- Number `dur`: The duration of the event
+- Number `dur`: The duration of the event in seconds
     - May be null or zero if event occurs at a specific point in time
      - Events with a null or zero duration will show up as a circle. 
      - This could still use the options below to determine if the circle is drawn on the source or target line.
 - String `pos`: The location of the duration bar for the event
-    - `ss`: Starts on the source line at `time`
-    - `es`: Ends on the source line at `time`
-    - `st`: Starts on the target line at `time`
-    - `et`: Ends on the target line at `time`
+    - `sSrc`: Starts on the source line at `time`
+    - `eSrc`: Ends on the source line at `time`
+    - `sTgt`: Starts on the target line at `time`
+    - `eTgt`: Ends on the target line at `time`
 
 ### Created/Destroyed ###
 
