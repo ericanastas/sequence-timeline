@@ -20,6 +20,8 @@ var margin = {top: 20, right: 20, bottom: 20, left: 20},
 //https://github.com/d3/d3-3.x-api-reference/blob/master/Ordinal-Scales.md#ordinal_rangeBands
 
 
+//Integrate brushing and scrolling zoom interactions
+http://bl.ocks.org/nnattawat/9689303
 
 
 
