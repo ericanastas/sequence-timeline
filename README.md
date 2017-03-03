@@ -13,13 +13,13 @@ D3 based visualization of chronological events in a combined sequence diagram st
 #!javascript
 
 {
-    "desc":"Event description",
+    "desc":"Event Description",
     "time":"2012-04-23T18:25:43.511Z",
     "src":"Source Line",
-     "tgt":"target line",
-     "class"="failed",
-     "dur":1234,
-     "pos":"ss"
+    "tgt":"target line",
+    "class"="failed",
+    "dur":1234,
+    "pos":"ss"
 }
 ```
 
