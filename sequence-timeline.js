@@ -22,6 +22,7 @@ var margin = {top: 20, right: 20, bottom: 20, left: 20},
 
 //Integrate brushing and scrolling zoom interactions
 http://bl.ocks.org/nnattawat/9689303
+http://bl.ocks.org/mbostock/1667367
 
 
 
