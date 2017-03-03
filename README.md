@@ -18,7 +18,7 @@ D3 based visualization of chronological events in a combined sequence diagram st
     "src":"Source Line",
     "tgt":"target line",
     "class"="failed",
-    "dur":8000,
+    "dur":300,
     "pos":"eSrc"
 }
 ```
