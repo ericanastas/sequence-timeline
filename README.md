@@ -14,6 +14,7 @@ D3 based visualization of chronological events in a combined sequence diagram st
 
 {
     "desc":"Event description",
+    "time":"2012-04-23T18:25:43.511Z",
     "src":"Source Line",
      "tgt":"target line",
      "class"="failed",
