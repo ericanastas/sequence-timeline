@@ -14,19 +14,19 @@ D3 based visualization of chronological events in a combined sequence diagram st
 
 ### Base Properites ###
 
-- String `Description`: A short description of the event
-- Date `TimeStamp`: The date/time of the event occurred
-- String `Source`: The source line of the event
-- String `Target`: The target of the event 
+- String `desc`: A short description of the event
+- Date `time`: The date/time of the event occurred
+- String `src`: The source line of the event
+- String `tgt`: The target of the event 
     - May be set to the same as the source for events that are not between lines
-- String `Class`: The CSS class to apply to the event elements
+- String `class`: The CSS class to apply to the event elements
 
 
 #### Duration ###
 
 Events can have a duration which cause the event to show up as a duration bar. 
 
-- Number `Duration`: The duration of the event
+- Number `dur`: The duration of the event
     - May be null or zero if event occurs at a specific point in time
      - Events with a null or zero duration will show up as a circle. 
      - This could still use the options below to determine if the circle is drawn on the source or target line.
@@ -43,12 +43,12 @@ Events can have a duration which cause the event to show up as a duration bar.
 
 - Line could create itself with an event where `Source` = `Target`
 
-- Bool `TargetCreated`: Identifies if the target was created by this event
+- Bool `tgtCreated`: Identifies if the target was created by this event
 
 - Should it be possible for the Source to be created by an event as well? I think the assumption is the source exists before the event
 
-- Bool `TargetDestroyed`: The Target line is destroyed by the event
-- Bool `SourceDestroyed`: The Source line is destroyed by the event
+- Bool `tgtDestroyed`: The Target line is destroyed by the event
+- Bool `srcDestroyed`: The Source line is destroyed by the event
 
 
 #### Activation ###
