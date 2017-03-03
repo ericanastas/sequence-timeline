@@ -13,13 +13,17 @@ D3 based visualization of chronological events in a combined sequence diagram st
 #!javascript
 
 {
-    "desc":"Event Description",
+    "desc":"Event 1",
     "time":"2012-04-23T18:25:43.511Z",
     "src":"Source Line",
     "tgt":"target line",
     "class"="failed",
     "dur":300,
-    "pos":"eSrc"
+    "pos":"endSrc"
+    "det":{"Field 1": "Value 1",
+           "Field 2": "Value 2",
+           "Field 3": "Value 3" };
+
 }
 ```
 
@@ -31,6 +35,7 @@ D3 based visualization of chronological events in a combined sequence diagram st
 - String `tgt`: The target of the event 
     - May be set to the same as the source for events that are not between lines
 - String `class`: The CSS class to apply to the event elements
+- Object `det: An object with additional details about the event which is displayed through a tooltip.`
 
 
 #### Duration ###
@@ -42,10 +47,10 @@ Events can have a duration which cause the event to show up as a duration bar.
      - Events with a null or zero duration will show up as a circle. 
      - This could still use the options below to determine if the circle is drawn on the source or target line.
 - String `pos`: The location of the duration bar for the event
-    - `sSrc`: Starts on the source line at `time`
-    - `eSrc`: Ends on the source line at `time`
-    - `sTgt`: Starts on the target line at `time`
-    - `eTgt`: Ends on the target line at `time`
+    - `startSrc`: Starts on the source line at `time`
+    - `endSrc`: Ends on the source line at `time`
+    - `startTgt`: Starts on the target line at `time`
+    - `endTgt`: Ends on the target line at `time`
 
 ### Created/Destroyed ###
 
