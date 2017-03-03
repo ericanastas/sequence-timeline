@@ -1,48 +1,68 @@
-var width = 960,
-    height = 500;
 
-var randomX = d3.random.normal(width / 2, 80),
-    randomY = d3.random.normal(height / 2, 80);
-
-var data = d3.range(2000).map(function() {
-  return [
-    randomX(),
-    randomY()
-  ];
-});
+//Defines the margin's an extents
+//https://bl.ocks.org/mbostock/3019563
 
 
-var zoomer = d3.behavior.zoom()
-  .on("zoom", zoom)
-
-var svg = d3.select("body")
-    .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-    .append("g")
-        .call(zoomer)
-        .on("wheel.zoom",pan)
-        .append("g");
-
-svg.selectAll("rect")
-    .data(data)
-    .enter()
-    .append("rect")
-    .attr("width", 10)
-    .attr("height", 10)
-    .attr("transform", function(d) { return "translate(" + d + ")"; });
+var margin = {top: 20, right: 20, bottom: 20, left: 20},
+    padding = {top: 60, right: 60, bottom: 60, left: 60},
+    outerWidth = 960,
+    outerHeight = 500,
+    innerWidth = outerWidth - margin.left - margin.right,
+    innerHeight = outerHeight - margin.top - margin.bottom,
+    width = innerWidth - padding.left - padding.right,
+    height = innerHeight - padding.top - padding.bottom;
 
 
 
-function zoom() {
-    console.log(d3.select(this))
-    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+
+
+//Range bands
+//https://github.com/d3/d3-3.x-api-reference/blob/master/Ordinal-Scales.md#ordinal_rangeBands
+
+
+
+
+
+
+//Creates the SVG element
+var svg = d3.select("body").append("svg")
+    .attr("width", outerWidth)
+    .attr("height", outerHeight)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+
+function render(data){
+    
+    
+    svg.append("rect")
+    .attr("class", "outer")
+    .attr("width", innerWidth)
+    .attr("fill", "none")
+    .attr("stroke","blue")
+    .attr("height", innerHeight);
+    
+    //Scales
+    var x = d3.scale.identity().domain([0, width]);
+    
+    
+    //Axes
+    var xAxis = d3.svg.axis().scale(x).orient("bottom");
+   
+    
+    var g = svg.append("g").attr("transform", "translate(" + padding.left + "," + padding.top + ")");
+    
+
+    g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+    
+
 }
 
-function pan() {
-    current_translate = d3.transform(svg.attr("transform")).translate;
-    dx = d3.event.wheelDeltaX + current_translate[0];
-    dy = d3.event.wheelDeltaY + current_translate[1];
-    svg.attr("transform", "translate(" + [dx,dy] + ")");
-    d3.event.stopPropagation();
-}
+
+
+d3.json("data.json",render);

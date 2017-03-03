@@ -1,13 +1,15 @@
 [
     {
         "desc": "Event 1",
-        "time": "2017-01-01T00:00:0Z",
+        "time": "2017-01-01T00:00:00Z",
+        "dur":1000,
         "src": "Line B",
         "tgt": "Line A"
     },
     {
-        "desc": "Event 1",
-        "time": "2017-01-01T01:00:0Z",
+        "desc": "Event 2",
+        "time": "2017-01-01T01:00:00Z",
+        "dur":1000,
         "src": "Line A",
         "tgt": "Line C"
     }
