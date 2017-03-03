@@ -60,16 +60,23 @@ Events can have a duration which cause the event to show up as a duration bar.
 
 ## Draw Logic ##
 
-1. Iterate over all events an determine all line identifier
+1. Iterate over all events
+    - Determine all line ids
+    - Record the earliest and latest event
+    - Sort event chronologically
+
 2. Determine Band(s) when each time line is alive
     - Line must exist whenever there is an event
     - If first event is not a created event then assume line is created before current range
     - If first event is a created event then show band created at that time
-    - Always destory line on destroy event
+    - Always destroy line on destroy event
     - Line may be recreated after a destroy event by any other event		
 3. Determine Band(s) when each time line is active
+
 4. Draw Events over bars
-    - 
+    - Append event bar if there is a duration
+    - Append event circle if no duration
+    - If Source != Target: Draw event arrow
 	
 ## Filtering / Hiding Lines ##
 - Should be able to filter out/hide lines
