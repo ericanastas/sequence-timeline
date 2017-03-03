@@ -62,14 +62,25 @@ Events can have a duration which cause the event to show up as a duration bar.
 - Bool `srcDes`: The Source line is destroyed by the event
 
 
-#### Activation ###
+### Activation ###
 
 - Activation
     - Lines can be activated and deactivated
 
-	
 
+#### Event Graphic Representation ###
+
+'src' and 'tgt' are different: Show arrow between lines
+
+'src and 'tgt" are the same: No Arrow
+
+'dur' > 0: Show duration bar
+
+'dur' == 0 | 'dur' == null: Show circle at event
+
+	
 ## Draw Logic ##
+
 
 1. Iterate over all events
     - Determine all line ids
@@ -81,7 +92,8 @@ Events can have a duration which cause the event to show up as a duration bar.
     - If first event is not a created event then assume line is created before current range
     - If first event is a created event then show band created at that time
     - Always destroy line on destroy event
-    - Line may be recreated after a destroy event by any other event		
+    - Line may be recreated after a destroy event by any other event	
+	
 3. Determine Band(s) when each time line is active
 
 4. Draw Events over bars
