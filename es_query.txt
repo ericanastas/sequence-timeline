@@ -1,0 +1,47 @@
+POST http://sfvs028:9200/revit.activity-*/_search
+{
+	"_source": {
+		"include": ["@timestamp",
+		"level",
+		"CentralFilePath",
+		"CentralFileName",
+		"Elapsed","Event"
+		]
+	},
+	"size":50,
+	"query": {
+		"bool": {
+			"must": [{
+				"term": {
+					"IsDetached": false
+				}
+			},
+			{
+				"term": {
+					"IsWorkshared": true
+				}
+			},
+			{
+				"term": {
+					"Event": "DocumentSynchronized"
+				}
+			}],
+			"should": [{
+				"prefix": {
+					"CentralFilePath": "RSN:"
+				}
+			},
+			{
+				"prefix": {
+					"CentralFilePath": "\\\\"
+				}
+			},
+			{
+				"prefix": {
+					"CentralFilePath": "W:"
+				}
+			}],
+			"minimum_number_should_match": 1
+		}
+	}
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <meta charset="utf-8">
+	    <title>d3 experiment</title>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+    </head>
+    <body>
+        
+        <svg>
+        
+        </svg>
+
+	 
+		  <script>
+              
+              var width = 600;
+              var height = 600;
+                
+              var data = [8,10,20,30];
+              
+              var jsonData = d3.json("data.json",function(d){
+                
+                  d.forEach(function(d){console.log(d.desc);});
+                  
+              });
+            
+              var svg = d3.select("svg")
+                .attr("width",width)
+                .attr("height",height);
+              
+              var selection = svg.selectAll("circle");
+              var d = selection.data(data);    
+              var e = d.enter();
+              var a = e.append("circle")
+                        .attr("r",10)
+                  .attr("cx",function(d,i){return i*20;})
+                  .attr("cy",50);
+              
+              
+              
+              var scale = d3.scale.ordinal()
+                                .domain(["Line 1", "Line 2","Line 3","Line 4"])
+                                .rangeRoundPoints([0,100]);
+              
+              var l4 = scale("Line 2");
+              
+              var start = new Date("2017-01-01T00:00:00Z");
+              var end = new Date("2017-01-01T02:00:00Z");
+              
+              var timeVal = new Date("2017-01-01T01:42:00Z")
+              
+              var timeScale = d3.time.scale().domain([start,end]).range([0,width]);
+              
+              
+              var timePt = timeScale(timeVal);
+              
+              
+              
+              
+              svg.append("line")
+                  .attr("x1",10)
+                  .attr("y1",20)
+                  .attr("x2",200)
+                  .attr("y2",30)
+                  .attr("stroke","black")
+                  .attr("stroke-dasharray","5, 5" )
+                  .attr("stroke-width",2);
+              
+              
+              
+              svg.append("path")
+                .attr("d","M50 50 L200 150 L300 450")
+                .attr("stroke","black")
+                .attr("stroke-width",2)
+                .attr("fill","none");
+                
+              
+              
+                
+              	
+		  
+
+              
+              
+        </script>
+    </body>
+</html>
